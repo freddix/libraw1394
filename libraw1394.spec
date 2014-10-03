@@ -1,7 +1,7 @@
 Summary:	Interface to Linux IEEE-1394 subsystem
 Name:		libraw1394
 Version:	2.1.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.kernel.org/pub/linux/libs/ieee1394/%{name}-%{version}.tar.bz2
@@ -47,6 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -65,7 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libraw1394.so
-%{_libdir}/libraw1394.la
 %{_includedir}/libraw1394
 %{_pkgconfigdir}/libraw1394.pc
 
